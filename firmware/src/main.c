@@ -1,5 +1,5 @@
 /*
- * Temperaturregler.c
+ * main.c
  *
  * Created: 22.02.2026 22:11:30
  * Author : Robin Nathmann
@@ -13,7 +13,7 @@
 
 
 /*
- * Hauptfunktion, wird bei Programmstart ausgeführt.
+ * Hauptfunktion, wird bei Programmstart ausgefÃ¼hrt.
  */
 int main(void) {
 	
@@ -28,7 +28,7 @@ int main(void) {
 		sampler_refresh();	// Abtaster refreshen
 		states_refresh();	// Zustandsautomat refreshen
 		
-		if (WATCHDOG_ENABLED) wdt_reset();	// Watchdog zurücksetzen
+		if (WATCHDOG_ENABLED) wdt_reset();	// Watchdog zurÃ¼cksetzen
 
 	}
 }
