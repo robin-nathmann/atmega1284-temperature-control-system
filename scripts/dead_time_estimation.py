@@ -110,4 +110,4 @@ def berechne_totzeiten(dateipfad, ignoriere_erste_n=20):
 
 # Aufruf
 if __name__ == '__main__':
-    berechne_totzeiten('../data/dead_time_target70.log', ignoriere_erste_n=0)
+    berechne_totzeiten('../data/control_response_2point_target70.log', ignoriere_erste_n=0)
