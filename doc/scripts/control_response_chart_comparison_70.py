@@ -13,22 +13,22 @@ DATEIEN = [
     },
     {
         "pfad": r"..\..\data\control_response_pi_compensation_tw10_target70.log",
-        "label": "PI Kompensation (TW=10)",
+        "label": "PI-Kompensationsregler (TW=10)",
         "farbe": "#ff7f0e",  # Leuchtendes Orange
     },
     {
         "pfad": r"..\..\data\control_response_pi_compensation_tw25_target70.log",
-        "label": "PI Kompensation (TW=25)",
+        "label": "PI-Kompensationsregler (TW=25)",
         "farbe": "#2ca02c",  # Kräftiges Grün
     },
     {
         "pfad": r"..\..\data\control_response_pi_compensation_tw100_target70.log",
-        "label": "PI Kompensation (TW=100)",
+        "label": "PI-Kompensationsregler (TW=100)",
         "farbe": "#9467bd",  # Violett
     },
     {
         "pfad": r"..\..\data\control_response_pi_zn_target70.log",
-        "label": "PI Kompensation nach Ziegler-Nichols",
+        "label": "PI-Regler nach Ziegler-Nichols",
         "farbe": "#d62728",  # Signalrot
     },
 ]
@@ -254,7 +254,7 @@ def erstelle_diagramm(
 
     # Legende unten rechts platzieren, damit sie nicht mit dem Inset-Plot kollidiert
     ax1.legend(loc="lower right", framealpha=0.95, ncol=3)
-    plt.title("Vergleich des Regelverhaltens verschiedener Regler")
+    plt.title("Vergleich des Regelverhaltens verschiedener Regler bei Soll-Temperatur von 70 Grad Celsius")
     plt.tight_layout()
     plt.savefig(r"..\figures\control_response_chart_comparison_70.png", dpi=300)
     plt.show()
