@@ -103,5 +103,5 @@ def eval_group(pattern):
         )
 
 
-eval_group(r"..\..\data\control_response_*_target70.log")
-eval_group(r"..\..\data\control_response_*_target40.log")
+eval_group(r"..\data\control_response_*_target70.log")
+eval_group(r"..\data\control_response_*_target40.log")
