@@ -95,7 +95,7 @@
 // Sensor
 #define SENSOR_MAX_CONSECUTIVE_ERRORS 5		// Maximal erlaubte aufeinanderfolgend Auslesefehler des Sensors
 #define SENSOR_MAX_VALID_TEMP 100			// Maximal erlaubte gemesessene Temperatur
-#define SENSOR_MIN_VALID_TEMP 10			// Minimal erlaubte gemsessene Temperatur
+#define SENSOR_MIN_VALID_TEMP -20			// Minimal erlaubte gemsessene Temperatur
 #define SENSOR_MAX_VALID_DEVIATION 5		// Maximale erlaubte Abweichung zwischen zwei Messungen
 
 // BME280 Config
