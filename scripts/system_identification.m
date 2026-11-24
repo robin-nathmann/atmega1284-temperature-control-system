@@ -138,24 +138,33 @@ warning('on', 'all')
 fig2 = figure(2);
 compare(data, sys)
 
-% Beschriftung, Axen und Farben
+% Beschriftung, Achsen und Farben
 xlabel('Zeit [s]');
 ylabel('Temperatur [0,01 °C]');
-title('Sprungantwort: Vergleich Messung und Modell');
+title('');                             % Diagrammtitel entfernen
+
 txt = findall(fig2, 'Type', 'text', 'String', 'y1');
 delete(txt);
 txt = findall(fig2, 'Type', 'text', 'String', '(seconds)');
 delete(txt);
+
 ax = findall(gcf, 'Type', 'axes');
+set(ax, 'FontSize', 14);               % Schriftgröße für alle Achsen & Ticks
 ax(4).XAxis.Exponent = 0;
+
 ax(1).XLabel.String = 'Zeit [s]';
+ax(1).XLabel.Units = 'normalized';
+ax(1).XLabel.Position(2) = ax(1).XLabel.Position(2) - 0.03; % Tiefer setzen
+
 h = findall(gcf, 'Type', 'line');
 h(7).Color = h(6).Color;
 h(6).Color = [0.8500 0.3250 0.0980];
+h(7).LineWidth = 2;                    % Linienstärke Messung
+h(6).LineWidth = 2;                    % Linienstärke Modell
 
 % Linien und Beschriftung
-xline(zeit(idx_vorne), '--black', 'LineWidth', 0.5);
-xline(zeit(idx_hinten), '--black', 'LineWidth', 0.5);
+xline(zeit(idx_vorne), '--black', 'LineWidth', 1.2);
+xline(zeit(idx_hinten), '--black', 'LineWidth', 1.2);
 yl = ylim;
 y_text = (yl(1) + yl(2)) / 2;
 text((x1+x2)/2, y_text, [num2str(eingang(idx_vorne-1)) ' %'], 'FontSize', 24, 'HorizontalAlignment', 'center', 'Color', 'black');
@@ -167,9 +176,10 @@ text((x3+x4)/2, y_text, [num2str(eingang(end)) ' %'], 'FontSize', 24, 'Horizonta
 lgd = findall(gcf, 'Type', 'legend');
 delete(lgd);
 hold on;
-p1 = plot(nan, nan, '-', 'Color', h(7).Color, 'LineWidth', 1.5);
-p2 = plot(nan, nan, '-', 'Color', h(6).Color, 'LineWidth', 1.5);
-legend([p1 p2], {'Messung', ['PT1-Tt-Modell: ' num2str(fit) '%']}, 'Location', 'best');
+p1 = plot(nan, nan, '-', 'Color', h(7).Color, 'LineWidth', 2);
+p2 = plot(nan, nan, '-', 'Color', h(6).Color, 'LineWidth', 2);
+legend([p1 p2], {'Messung', ['PT1-Tt-Modell: ' num2str(fit) '%']}, ...
+    'Location', 'best', 'FontSize', 14);
 hold off;
 
 % Speichern
