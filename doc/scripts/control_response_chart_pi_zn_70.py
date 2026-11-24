@@ -89,7 +89,7 @@ def erstelle_diagramm(
         zeiten, ist_temp, color="tab:red", linewidth=2, zorder=2, label="Ist-Temperatur (°C)"
     )
 
-    ax1.set_xlabel("Zeit t in Sekunden (s)")
+    ax1.set_xlabel("Zeit t in s")
     ax1.set_ylabel("Temperatur in °C", color="tab:red")
     ax1.tick_params(axis="y", which="both", labelcolor="tab:red")
     ax1.tick_params(axis="x", which="both")
@@ -181,10 +181,10 @@ def erstelle_diagramm(
     ax1.legend(linien, labels, loc="lower right", framealpha=0.95, ncol=3)
 
     # Titel explizit auf ax1 setzen statt plt.title()
-    ax1.set_title(
-        "Regelverhalten des PI-Reglers nach Ziegler-Nichols bei einer Soll-Temperatur von 70 Grad Celsius mit Heizleistung",
-        pad=12
-    )
+    #ax1.set_title(
+    #    "Regelverhalten des PI-Reglers nach Ziegler-Nichols bei einer Soll-Temperatur von 70 Grad Celsius mit Heizleistung",
+    #    pad=12
+    #)
     plt.tight_layout()
     plt.savefig(r"..\figures\control_response_chart_pi_zn_70.png", dpi=300)
     plt.show()
@@ -192,6 +192,15 @@ def erstelle_diagramm(
 
 if __name__ == "__main__":
     t, ist, soll, pwm = lese_logdatei(DATEIPFAD, max_zeit=MAX_ZEIT)
+    
+    plt.rcParams.update({
+        "font.size": 14,          # Basis-Schriftgröße
+        "axes.labelsize": 15,     # Achsenbeschriftungen (Zeit, Temperatur)
+        "xtick.labelsize": 13,    # Zahlen an der x-Achse
+        "ytick.labelsize": 13,    # Zahlen an der y-Achse
+        "legend.fontsize": 12,    # Legende
+}   )
+    
     erstelle_diagramm(
         t, ist, soll, pwm,
         zeige_leistung=ZEIGE_HEIZLEISTUNG,

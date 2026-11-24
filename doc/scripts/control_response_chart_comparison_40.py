@@ -13,17 +13,17 @@ DATEIEN = [
     },
     {
         "pfad": r"..\..\data\control_response_pi_compensation_tw10_target40.log",
-        "label": "PI-Kompensationsregler (TW=10)",
+        "label": "PI-Kompensationsregler (TW=10s)",
         "farbe": "#ff7f0e",  # Leuchtendes Orange
     },
     {
         "pfad": r"..\..\data\control_response_pi_compensation_tw25_target40.log",
-        "label": "PI-Kompensationsregler (TW=25)",
+        "label": "PI-Kompensationsregler (TW=25s)",
         "farbe": "#2ca02c",  # Kräftiges Grün
     },
     {
         "pfad": r"..\..\data\control_response_pi_compensation_tw100_target40.log",
-        "label": "PI-Kompensationsregler (TW=100)",
+        "label": "PI-Kompensationsregler (TW=100s)",
         "farbe": "#9467bd",  # Violett
     },
     {
@@ -216,7 +216,7 @@ def erstelle_diagramm(
             max_gefundene_zeit = max(max_gefundene_zeit, max(d["zeiten"]))
         alle_ist_werte.extend(d["ist"])
 
-    ax1.set_xlabel("Zeit t in Sekunden (s)")
+    ax1.set_xlabel("Zeit t in s")
     ax1.set_ylabel("Temperatur in °C")
     ax1.tick_params(axis="both", which="both")
 
@@ -254,7 +254,7 @@ def erstelle_diagramm(
 
     # Legende unten rechts platzieren, damit sie nicht mit dem Inset-Plot kollidiert
     ax1.legend(loc="lower right", framealpha=0.95, ncol=3)
-    plt.title("Vergleich des Regelverhaltens verschiedener Regler bei Soll-Temperatur von 40 Grad Celsius")
+    #plt.title("Vergleich des Regelverhaltens verschiedener Regler bei Soll-Temperatur von 40 Grad Celsius")
     plt.tight_layout()
     plt.savefig(r"..\figures\control_response_chart_comparison_40.png", dpi=300)
     plt.show()
@@ -272,7 +272,15 @@ if __name__ == "__main__":
             })
 
     angeglichene_daten = gleiche_starttemperatur_an(geladene_daten, max_zeit=MAX_ZEIT)
-
+    
+    plt.rcParams.update({
+        "font.size": 14,          # Basis-Schriftgröße
+        "axes.labelsize": 15,     # Achsenbeschriftungen (Zeit, Temperatur)
+        "xtick.labelsize": 13,    # Zahlen an der x-Achse
+        "ytick.labelsize": 13,    # Zahlen an der y-Achse
+        "legend.fontsize": 12,    # Legende
+    })
+    
     erstelle_diagramm(
         angeglichene_daten,
         max_zeit=MAX_ZEIT,
